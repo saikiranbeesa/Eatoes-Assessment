@@ -28,13 +28,13 @@ export function Analytics() {
   };
 
   return (
-    <div className="flex-1 p-8">
-      <h1 className="text-3xl font-bold mb-8">Analytics</h1>
+    <div className="flex-1 p-4 sm:p-8 w-full">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-8">Analytics</h1>
 
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-6">
           <TrendingUp size={24} className="text-green-600" />
-          <h2 className="text-2xl font-bold">Top 5 Selling Items</h2>
+          <h2 className="text-xl sm:text-2xl font-bold">Top 5 Selling Items</h2>
         </div>
 
         {loading ? (
@@ -44,25 +44,25 @@ export function Analytics() {
         ) : topSellers.length > 0 ? (
           <div className="space-y-4">
             {topSellers.map((item, index) => (
-              <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-10 h-10 bg-red-600 text-white rounded-full font-bold">
+              <div key={index} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-gray-50 rounded-lg gap-3">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="flex items-center justify-center w-10 h-10 bg-red-600 text-white rounded-full font-bold text-sm">
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="font-semibold">
+                    <h3 className="font-semibold text-sm sm:text-base">
                       {item.details && item.details[0]?.name}
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-xs sm:text-sm text-gray-600">
                       {item.totalQty} units sold
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-green-600">
+                  <p className="text-base sm:text-lg font-bold text-green-600">
                     ${item.totalRevenue?.toFixed(2) || '0.00'}
                   </p>
-                  <p className="text-sm text-gray-600">Total Revenue</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Total Revenue</p>
                 </div>
               </div>
             ))}
